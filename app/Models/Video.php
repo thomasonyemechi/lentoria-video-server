@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Video extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'length', 'title', 'lecture_id', 'video_hash', 'video', 'status'
+    ];
 }
