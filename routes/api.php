@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EbookController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VideoController;
@@ -22,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('/video', [VideoController::class, 'uploadNewLectureVideo']);
+Route::post('/book', [EbookController::class, 'uploadEbook']);

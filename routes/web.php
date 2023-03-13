@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EbookController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +28,7 @@ Route::get('/stream', function () {
 Route::get('/hash/{length}', [VideoController::class, 'win_hashs']);
 Route::get('/watchvideo/{hash}', [VideoController::class, 'fetchVideo']);
 Route::post('/video', [VideoController::class, 'uploadNewLectureVideo']);
+
+
+Route::get('/book/{file_name}/{user_id}', [EbookController::class, 'fetchEbook']);
+
