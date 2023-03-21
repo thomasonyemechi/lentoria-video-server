@@ -21,7 +21,7 @@ class EbookController extends Controller
             return response(['errors' => $val->errors()->all()], 422);
         }
 
-        
+
         $check = Ebook::where('course_id', $request->course_id)->first();
 
         if ($check) {
@@ -60,9 +60,9 @@ class EbookController extends Controller
 
 
 
-    function fetchEbook($file_name, $user_id)
+    function fetchEbook($course_id, $user_id)
     {
-        $book = Ebook::where(['file' => $file_name])->first();
+        $book = Ebook::where(['course_id' => $course_id])->first();
 
         $path = 'document/'.$book->file;
         if (!File::exists($path)) {
