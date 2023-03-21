@@ -95,5 +95,5 @@ class EbookController extends Controller
             'downloads' => $downloads
         ], 200);
     }
-}
+
 }
