@@ -30,5 +30,4 @@ Route::get('/watchvideo/{hash}', [VideoController::class, 'fetchVideo']);
 Route::post('/video', [VideoController::class, 'uploadNewLectureVideo']);
 
 
-Route::get('/book/{file_name}/{user_id}', [EbookController::class, 'fetchEbook']);
 
