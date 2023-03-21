@@ -64,7 +64,13 @@ class EbookController extends Controller
     {
         $book = Ebook::where(['course_id' => $course_id])->first();
 
-        $path = 'document/'.$book->file;
+        if (!$book) {
+            return response([
+                'message' => 'No ebook was found for this course'
+            ], 404);
+        }
+
+        $path = 'document/' . $book->file;
         if (!File::exists($path)) {
             return response([
                 'message' => 'Ebook was not found'
@@ -76,15 +82,17 @@ class EbookController extends Controller
             'user_id' => $user_id,
         ]);
 
-        return response()->download($path, $book->title);
+        return response([
+            'path' => $path
+        ]);
     }
 
 
 
     function fetchEbookDownloadHistory($course_id)
     {
-        $book =  Ebook::where('course_id', $course_id)->first();     
-        if(!$book) {
+        $book =  Ebook::where('course_id', $course_id)->first();
+        if (!$book) {
             return response([
                 'message' => 'No ebook was found for this course'
             ], 404);
@@ -95,5 +103,4 @@ class EbookController extends Controller
             'downloads' => $downloads
         ], 200);
     }
-
 }
