@@ -24,3 +24,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/video', [VideoController::class, 'uploadNewLectureVideo']);
 Route::post('/book', [EbookController::class, 'uploadEbook']);
+Route::get('/book/downloads/{course_id}', [EbookController::class, 'fetchEbookDownloadHistory']);

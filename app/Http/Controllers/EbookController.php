@@ -78,4 +78,21 @@ class EbookController extends Controller
 
         return response()->download($path, $book->title);
     }
+
+
+
+    function fetchEbookDownloadHistory($course_id)
+    {
+        $book =  Ebook::where('course_id', $course_id)->first();     
+        if(!$book) {
+            return response([
+                'message' => 'No ebook was found for this course'
+            ], 404);
+        }
+        $downloads = Download::where('file_id', $book->id)->paginate(100);
+        return response([
+            'book' => $book,
+            'downloads' => $downloads
+        ], 200);
+    }
 }
